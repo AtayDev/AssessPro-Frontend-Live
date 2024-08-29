@@ -1,0 +1,15 @@
+INSERT INTO head_manager (id, email, fname, lname) VALUES
+(3, 'zinedine.zidane@example.com', 'Zinedine', 'Zidane'),
+(78, 'nicolas.antonini@example.com', 'Nicolas', 'Antonini'),
+(101, 'gregory.david@example.com', 'Grégory', 'DAVID'),
+(122, 'samba.fall@example.com', 'Samba', 'Fall'),
+(198, 'jurgen.klop@example.com', 'Jurgen', 'KLOP'),
+(213, 'lamine.yamal@example.com', 'Lamine', 'Yamal'),
+(214, 'mariano.brasco@example.com', 'Mariano', 'Brasco'),
+(241, 'jeronimo.dominguez@example.com', 'Jeronimo', 'Dominguez'),
+(249, 'edinson.scaloni@example.com', 'Edinson', 'scaloni'),
+(328, 'simone.pepe@example.com', 'SIMONE', 'PEPE'),
+(336, 'william.talahassy@example.com', 'William', 'Talahassy'),
+(340, 'alexis.sanchez@example.com', 'Alexis', 'Sanchez'),
+(357, 'benyamin.vendino@example.com', 'Benyamin', 'Vendino'),
+(364, 'lukas.podolski@example.com', 'Lukas', 'PODOLSKI');
