@@ -12,27 +12,36 @@ const DynamicTable = () => {
 
   useEffect(() => {
     let fetchData;
+    const cachedData = localStorage.getItem(`${type}-data`);
 
-    switch (type) {
-      case "managers":
-        fetchData = fetchManagers;
-        break;
-      case "teams":
-        fetchData = fetchTeams;
-        break;
-      case "agents":
-        fetchData = fetchAgents;
-        break;
-      default:
-        fetchData = () => Promise.resolve([]);
-        break;
+    if (cachedData) {
+      const parsedData = JSON.parse(cachedData);
+      setData(parsedData);
+      setFilteredData(parsedData);
+      initializeDropdowns(parsedData);
+    } else {
+      switch (type) {
+        case "managers":
+          fetchData = fetchManagers;
+          break;
+        case "teams":
+          fetchData = fetchTeams;
+          break;
+        case "agents":
+          fetchData = fetchAgents;
+          break;
+        default:
+          fetchData = () => Promise.resolve([]);
+          break;
+      }
+
+      fetchData().then((data) => {
+        setData(data);
+        setFilteredData(data);
+        initializeDropdowns(data);
+        localStorage.setItem(`${type}-data`, JSON.stringify(data));
+      });
     }
-
-    fetchData().then((data) => {
-      setData(data);
-      setFilteredData(data);
-      initializeDropdowns(data);
-    });
   }, [type]);
 
   useEffect(() => {
@@ -127,12 +136,10 @@ const DynamicTable = () => {
           const filterValue = filters[key];
 
           if (key === "tranche") {
-            // Tranche is derived from the team ID
             return item.id.toString().startsWith(filterValue);
           }
 
           if (key === "agents") {
-            // Check if any agent matches the filter value
             return item.agents.some((agent) =>
               `XX${agent.id} - ${agent.fname} ${agent.lname}`
                 .toLowerCase()
@@ -141,22 +148,18 @@ const DynamicTable = () => {
           }
 
           if (key === "numberOfAgents") {
-            // Compare number of agents
             return item.agents.length === parseInt(filterValue, 10);
           }
 
           if (typeof item[key] === "number") {
-            // Handle numeric filtering
             return item[key] === parseInt(filterValue, 10);
           }
 
           if (typeof item[key] === "string") {
-            // Handle string-based filtering
             return item[key].toLowerCase().includes(filterValue.toLowerCase());
           }
 
           if (key === "manager") {
-            // Filter by manager's full name
             return (
               `${item.manager.fname} ${item.manager.lname}` === filterValue
             );
