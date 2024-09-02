@@ -33,7 +33,7 @@ const ImportAgents = () => {
       formData.append("file", file);
 
       const response = await fetch(
-        "http://localhost:8080/shifter_api/agents/import",
+        `${process.env.REACT_APP_API_URL}/shifter_api/agents/import`,
         {
           method: "POST",
           body: formData,

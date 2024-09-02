@@ -1,5 +1,5 @@
 class AgentService {
-  static baseUrl = "http://localhost:8080/shifter_api";
+  static baseUrl = `${process.env.REACT_APP_API_URL}/shifter_api`;
 
   static getNumberOfAgents() {
     const url = `${this.baseUrl}/Agents/count`;

@@ -73,13 +73,13 @@ const DynamicTable = () => {
   };
 
   const fetchManagers = async () => {
-    return await fetch("http://localhost:8080/shifter_api/Managers").then(
+    return await fetch(`${process.env.REACT_APP_API_URL}/shifter_api/Managers`).then(
       (res) => res.json()
     );
   };
 
   const fetchTeams = async () => {
-    const res = await fetch("http://localhost:8080/shifter_api/Teams").then(
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/shifter_api/Teams`).then(
       (res) => res.json()
     );
 
@@ -95,12 +95,12 @@ const DynamicTable = () => {
 
   const fetchManagerOfTeam = async (id) => {
     return await fetch(
-      `http://localhost:8080/shifter_api/Team/${id}/manager`
+      `${process.env.REACT_APP_API_URL}/shifter_api/Team/${id}/manager`
     ).then((res) => res.json());
   };
 
   const fetchAgents = async () => {
-    return await fetch("http://localhost:8080/shifter_api/Agents").then((res) =>
+    return await fetch(`${process.env.REACT_APP_API_URL}/shifter_api/Agents`).then((res) =>
       res.json()
     );
   };

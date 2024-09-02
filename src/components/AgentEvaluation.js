@@ -23,7 +23,7 @@ const AgentEvaluation = () => {
   const handleFetchAgent = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/shifter_api/Agent/${id}`
+        `${process.env.REACT_APP_API_URL}/shifter_api/Agent/${id}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -39,7 +39,7 @@ const AgentEvaluation = () => {
   const handleFetchEvaluations = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/shifter_api/Evaluation/Agent/${id}`
+        `${process.env.REACT_APP_API_URL}/shifter_api/Evaluation/Agent/${id}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -140,7 +140,7 @@ const AgentEvaluation = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:8080/shifter_api/Evaluation",
+          `${process.env.REACT_APP_API_URL}/shifter_api/Evaluation`,
           {
             method: "POST",
             headers: {
@@ -178,7 +178,7 @@ const AgentEvaluation = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:8080/shifter_api/Evaluation/${evaluation.id}`,
+          `${process.env.REACT_APP_API_URL}/shifter_api/Evaluation/${evaluation.id}`,
           {
             method: "PUT",
             headers: {

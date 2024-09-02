@@ -1,6 +1,6 @@
 // ManagerService.js
 class ManagerService {
-  static baseUrl = "http://localhost:8080/shifter_api";
+  static baseUrl = `${process.env.REACT_APP_API_URL}/shifter_api`;
 
   // Fetch the number of students
   static getNumberOfManagers() {

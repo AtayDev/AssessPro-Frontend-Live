@@ -33,7 +33,7 @@ const ImportTeams = () => {
       formData.append("file", file);
 
       const response = await fetch(
-        "http://localhost:8080/shifter_api/teams/import",
+        `${process.env.REACT_APP_API_URL}/shifter_api/teams/import`,
         {
           method: "POST",
           body: formData,

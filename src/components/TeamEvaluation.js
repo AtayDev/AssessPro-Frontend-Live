@@ -27,7 +27,7 @@ const TeamEvaluation = () => {
   const handleFetchTeam = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/shifter_api/Team/${id}`
+        `${process.env.REACT_APP_API_URL}/shifter_api/Team/${id}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -43,7 +43,7 @@ const TeamEvaluation = () => {
   const handleFetchEvaluations = async () => {
     try {
         const response = await fetch(
-            `http://localhost:8080/shifter_api/Evaluation/Team/${id}`
+            `${process.env.REACT_APP_API_URL}/shifter_api/Evaluation/Team/${id}`
         );
         if (response.ok) {
             const data = await response.json();
@@ -150,7 +150,7 @@ const TeamEvaluation = () => {
           JSON.stringify(formattedEvaluation)
         );
         const response = await fetch(
-          "http://localhost:8080/shifter_api/Evaluation",
+          `${process.env.REACT_APP_API_URL}/shifter_api/Evaluation`,
           {
             method: "POST",
             headers: {
@@ -187,7 +187,7 @@ const TeamEvaluation = () => {
       try {
         console.log("Sending JSON (PUT):", JSON.stringify(formattedEvaluation));
         const response = await fetch(
-          `http://localhost:8080/shifter_api/Evaluation/${evaluation.id}`,
+          `${process.env.REACT_APP_API_URL}/shifter_api/Evaluation/${evaluation.id}`,
           {
             method: "PUT",
             headers: {

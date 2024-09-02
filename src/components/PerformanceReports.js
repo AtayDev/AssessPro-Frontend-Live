@@ -13,7 +13,7 @@ const ManagersList = () => {
   useEffect(() => {
     const fetchManagers = async () => {
       try {
-        const response = await fetch('http://localhost:8080/shifter_api/Managers'); // Replace with your actual API endpoint
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/shifter_api/Managers`); // Replace with your actual API endpoint
         const data = await response.json();
         setManagers(data);
       } catch (err) {
@@ -69,12 +69,12 @@ const TeamPerformance = () => {
   useEffect(() => {
     const fetchTeamPerformance = async () => {
       try {
-        const managerResponse = await fetch(`http://localhost:8080/shifter_api/Manager/${managerId}`);
+        const managerResponse = await fetch(`${process.env.REACT_APP_API_URL}/shifter_api/Manager/${managerId}`);
         const managerData = await managerResponse.json();
         setManager(managerData);
          
         //Change here
-        const agentsResponse = await fetch(`http://localhost:8080/shifter_api/teams/${managerData.teamId}/agents`);
+        const agentsResponse = await fetch(`${process.env.REACT_APP_API_URL}/shifter_api/teams/${managerData.teamId}/agents`);
         const agentsData = await agentsResponse.json();
         setTeamAgents(agentsData);
       } catch (err) {
@@ -165,7 +165,7 @@ const AgentSkills = () => {
   useEffect(() => {
     const fetchAgentEvaluations = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/agents/${agentId}/evaluations`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/agents/${agentId}/evaluations`);
         const data = await response.json();
         setAgent(data.agent); // Assuming the agent's basic info is included
         setEvaluations(data.evaluations); // List of evaluations with dates and skills

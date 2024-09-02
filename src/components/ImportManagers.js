@@ -24,7 +24,7 @@ const ImportManagers = () => {
       console.log("file recognized: " + file);
 
       const response = await fetch(
-        "http://localhost:8080/shifter_api/managers/import",
+        `${process.env.REACT_APP_API_URL}/shifter_api/managers/import`,
         {
           method: "POST",
           body: formData,
